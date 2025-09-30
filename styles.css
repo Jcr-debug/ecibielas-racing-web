@@ -16,7 +16,7 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styles */
+
 .header {
     background: linear-gradient(135deg, #dc2626, #b91c1c);
     color: white;
@@ -69,7 +69,7 @@ body {
     transform: translateY(-1px);
 }
 
-/* Hamburger Menu Styles */
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -106,7 +106,7 @@ body {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Hamburger Menu Styles */
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -143,7 +143,7 @@ body {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Mobile Menu Overlay */
+
 .menu-overlay {
     display: none;
     position: fixed;
@@ -162,7 +162,7 @@ body {
     opacity: 1;
 }
 
-/* Hero Section */
+
 .hero {
     margin-top: 80px;
     background: linear-gradient(rgba(220, 38, 38, 0.3), rgba(185, 28, 28, 0.3)), url('Figures/Portada.png');
@@ -216,7 +216,7 @@ body {
 }
 
 .hero-image {
-    display: none; /* Ocultamos la imagen ya que ahora es el fondo */
+    display: none; 
 }
 
 .hero-image img {
@@ -226,7 +226,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* Mission Section */
+
 .mission-section {
     padding: 80px 0;
     background: #f8f9fa;
@@ -299,7 +299,7 @@ body {
     left: 0;
 }
 
-/* Team Section */
+
 .team-section {
     padding: 80px 0;
     background: white;
@@ -319,7 +319,7 @@ body {
     margin-bottom: 50px;
 }
 
-/* Team Navigation */
+
 .team-navigation {
     display: flex;
     align-items: center;
@@ -381,7 +381,7 @@ body {
     transform: scale(1.2);
 }
 
-/* Team Carousel */
+
 .team-carousel {
     position: relative;
     overflow: hidden;
@@ -457,7 +457,7 @@ body {
     line-height: 1.6;
 }
 
-/* Product Section */
+
 .product-section {
     padding: 80px 0;
     background: #f8f9fa;
@@ -529,7 +529,7 @@ body {
     line-height: 1.6;
 }
 
-/* Modal Styles */
+
 .modal {
     display: none;
     position: fixed;
@@ -583,10 +583,10 @@ body {
 }
 
 .modal-caption {
-    display: none; /* Ocultar caption completamente */
+    display: none; 
 }
 
-/* Requirements Section */
+
 .requirements-section {
     padding: 80px 0;
     background: white;
@@ -626,7 +626,7 @@ body {
     border-bottom: 1px solid #e9ecef;
 }
 
-/* Efectos hover adicionales */
+
 .dot:hover {
     background: #dc2626 !important;
     transform: scale(1.2) !important;
@@ -657,13 +657,13 @@ body {
     transform: scale(1.2);
 }
 
-/* Logo hover effect */
+
 .logo:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
 
-/* Header effect on scroll */
+
 .header.scrolled {
     background: rgba(220, 38, 38, 0.95) !important;
     backdrop-filter: blur(10px);
@@ -679,7 +679,7 @@ body {
     font-weight: bold;
 }
 
-/* Costs Section */
+
 .costs-section {
     padding: 80px 0;
     background: #f8f9fa;
@@ -787,7 +787,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Footer */
+
 .footer {
     background: #000;
     color: white;
@@ -833,7 +833,7 @@ body {
     opacity: 0.7;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .header {
         padding: 0.5rem 0;
@@ -912,7 +912,7 @@ body {
     }
     
     .hero-image {
-        padding: 0 30px; /* Más padding en móvil para mejor apariencia */
+        padding: 0 30px; 
     }
     
     .hero-content h2 {
@@ -1014,7 +1014,7 @@ body {
         height: 100px;
     }
 
-    /* Modal responsive */
+    
     .modal-content {
         margin: 10% auto;
         width: 95%;

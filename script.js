@@ -1,6 +1,4 @@
-// Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
-    // Team Carousel Functionality
     const teamGroups = ['Grupo Inversionista', 'Grupo General', 'Grupo Financiero', 'Grupo Diseño y Desarrollo', 'Grupo Producción', 'Grupo Calidad'];
     let currentGroupIndex = 0;
     
@@ -10,20 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const teamGroupElements = document.querySelectorAll('.team-group');
 
     function showGroup(index) {
-        // Hide all groups
         teamGroupElements.forEach(group => {
             group.classList.remove('active');
         });
 
-        // Show current group
         teamGroupElements[index].classList.add('active');
 
-        // Update dots
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === index);
         });
 
-        // Update button states
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === teamGroups.length - 1;
     }
@@ -42,11 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Event listeners
     nextBtn.addEventListener('click', nextGroup);
     prevBtn.addEventListener('click', prevGroup);
 
-    // Dot navigation
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentGroupIndex = index;
@@ -54,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Keyboard navigation
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowLeft') {
             prevGroup();
@@ -63,11 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Initialize
     showGroup(0);
 
-    // Rest of existing code...
-    // Get all navigation links
     const navLinks = document.querySelectorAll('.nav a[href^="#"]');
     
     navLinks.forEach(link => {
@@ -89,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // CTA Button smooth scroll
     const ctaButton = document.querySelector('.cta-button');
     if (ctaButton) {
         ctaButton.addEventListener('click', function() {
@@ -106,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add active class to navigation items based on scroll position
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav a[href^="#"]');
 
@@ -131,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', updateActiveNav);
 
-    // Add some animation effects
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -146,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe elements for animation
     const animatedElements = document.querySelectorAll('.mission-card, .team-member, .product-image, .cost-table-container, .summary-card');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
@@ -155,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav');
     const menuOverlay = document.querySelector('.menu-overlay');
@@ -166,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hamburger.classList.toggle('active');
             menuOverlay.classList.toggle('active');
             
-            // Prevent body scroll when menu is open
+            
             if (navMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -174,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Close menu when clicking on a link
+        
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 navMenu.classList.remove('active');
@@ -184,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Close menu when clicking on overlay
+        
         menuOverlay.addEventListener('click', function() {
             navMenu.classList.remove('active');
             hamburger.classList.remove('active');
@@ -192,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         });
 
-        // Close menu with Escape key
+        
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
@@ -203,10 +186,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add hover effects to tables (mejorado para no interferir con CSS)
+    
     const tableRows = document.querySelectorAll('.requirements-table tbody tr, .costs-table tbody tr');
     tableRows.forEach(row => {
-        // Solo aplicar si no tiene hover definido en CSS
+        
         if (!row.matches(':hover')) {
             row.addEventListener('mouseenter', function() {
                 if (!this.style.transform) {
@@ -221,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Add loading animation for images
+    
     const images = document.querySelectorAll('img');
     images.forEach(img => {
         img.addEventListener('load', function() {
@@ -236,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Add counter animation for big numbers
+    
     const bigNumbers = document.querySelectorAll('.big-number');
     
     function animateCounter(element, target, duration = 2000) {
@@ -251,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(timer);
             }
             
-            // Format the number based on its content
+            
             if (element.textContent.includes('%')) {
                 element.textContent = Math.round(current) + '%';
             } else {
@@ -260,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 16);
     }
 
-    // Start counter animation when elements come into view
+    
     const counterObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -280,35 +263,35 @@ document.addEventListener('DOMContentLoaded', function() {
         counterObserver.observe(number);
     });
 
-    // Image Modal Functionality
+    
     const modal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const modalCaption = document.getElementById('modalCaption');
     const closeModal = document.getElementById('closeModal');
     const clickableImages = document.querySelectorAll('.clickable-image');
 
-    // Open modal when clicking on images
+    
     clickableImages.forEach(img => {
         img.addEventListener('click', function() {
             modal.style.display = 'block';
             modalImage.src = this.src;
-            modalCaption.textContent = ''; // Sin caption
+            modalCaption.textContent = ''; 
         });
     });
 
-    // Close modal when clicking the X
+    
     closeModal.addEventListener('click', function() {
         modal.style.display = 'none';
     });
 
-    // Close modal when clicking outside the image
+    
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             modal.style.display = 'none';
         }
     });
 
-    // Close modal with Escape key
+    
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.style.display === 'block') {
             modal.style.display = 'none';
@@ -316,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add scroll effect to header
+
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     if (window.scrollY > 50) {
@@ -326,9 +309,9 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Add resize handler for responsive behavior
+
 window.addEventListener('resize', function() {
-    // Update any dynamic calculations if needed
+    
     const heroHeight = window.innerHeight * 0.6;
     const hero = document.querySelector('.hero');
     if (hero && window.innerWidth > 768) {
