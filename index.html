@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecibielas Racing - Página Oficial</title>
+    <link rel="icon" type="image/png" href="Figures/Logo.png">
+    <link rel="shortcut icon" type="image/png" href="Figures/Logo.png">
+    <link rel="apple-touch-icon" href="Figures/Logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="Figures/Logo.png" alt="Ecibielas Racing Logo">
+            </div>
+            <button class="hamburger" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#mision">Misión</a></li>
+                    <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="#producto">Nuestro Producto</a></li>
+                    <li><a href="#requisitos">Requisitos</a></li>
+                    <li><a href="#costos">Costos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>Bienvenidos a Ecibielas Racing</h2>
+            <p>Líderes en la fabricación de bielas de alta calidad para el sector automotriz</p>
+            <button class="cta-button">Conoce Más</button>
+        </div>
+        <div class="hero-image">
+            <img src="Figures/Portada.png" alt="Portada Ecibielas Racing">
+        </div>
+    </section>
+
+    <!-- Misión Institucional -->
+    <section id="mision" class="mission-section">
+        <div class="container">
+            <h2>Misión Institucional</h2>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Misión</h3>
+                    <p>Desarrollar y fabricar bielas de alta calidad que superen las expectativas de nuestros clientes, proporcionando soluciones innovadoras y confiables para la industria automotriz mediante el uso de tecnología de vanguardia y un equipo altamente capacitado.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Visión</h3>
+                    <p>Ser la empresa líder en el diseño y fabricación de bielas en el mercado nacional, reconocida por nuestra excelencia, innovación y compromiso con la calidad, expandiendo nuestro alcance a mercados internacionales para el año 2030.</p>
+                </div>
+                <div class="mission-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Valores</h3>
+                    <ul>
+                        <li><strong>Calidad:</strong> Compromiso con la excelencia en cada producto</li>
+                        <li><strong>Innovación:</strong> Búsqueda constante de mejoras tecnológicas</li>
+                        <li><strong>Integridad:</strong> Transparencia en todas nuestras operaciones</li>
+                        <li><strong>Trabajo en equipo:</strong> Colaboración efectiva para el éxito común</li>
+                        <li><strong>Responsabilidad:</strong> Cumplimiento de compromisos con clientes y sociedad</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiénes Somos -->
+    <section id="quienes-somos" class="team-section">
+        <div class="container">
+            <h2>Quiénes Somos</h2>
+            <p class="team-intro">Nuestro equipo directivo está conformado por profesionales altamente capacitados y comprometidos con la excelencia.</p>
+            
+            <!-- Team Navigation -->
+            <div class="team-navigation">
+                <button class="nav-btn prev-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="team-indicator">
+                    <div class="dots-container">
+                        <span class="dot active" data-group="0"></span>
+                        <span class="dot" data-group="1"></span>
+                        <span class="dot" data-group="2"></span>
+                        <span class="dot" data-group="3"></span>
+                        <span class="dot" data-group="4"></span>
+                        <span class="dot" data-group="5"></span>
+                    </div>
+                </div>
+                <button class="nav-btn next-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Team Grid Container -->
+            <div class="team-carousel">
+                <!-- Grupo Inversionista -->
+                <div class="team-group active" data-group="inversionista">
+                    <div class="team-grid single-member">
+                        <div class="team-member">
+                            <img src="Figures/Gerente general.png" alt="Inversionista">
+                            <h3>Giovanni Alexander Castellanos Forero</h3>
+                            <p class="position">Inversionista</p>
+                            <p class="description">Respaldo financiero y visión estratégica para el crecimiento de la empresa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo General -->
+                <div class="team-group" data-group="general">
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="Figures/Gerente general.png" alt="Gerente General">
+                            <h3>Brayan Stiben Navas Silva</h3>
+                            <p class="position">Gerente General</p>
+                            <p class="description">Líder visionario con amplia experiencia en la industria automotriz</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="Figures/Asistente de Gerente Genera.png" alt="Asistente de Gerente General">
+                            <h3>Juan Manuel Muñoz Hernández</h3>
+                            <p class="position">Asistente de Gerente General</p>
+                            <p class="description">Apoyo estratégico en la dirección general de la empresa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo Financiero -->
+                <div class="team-group" data-group="financiero">
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="Figures/Gerente Financiero.png" alt="Gerente Financiero">
+                            <h3>Arlex Santiago Farfán Cárdenas</h3>
+                            <p class="position">Gerente Financiero</p>
+                            <p class="description">Especialista en gestión financiera y control de costos</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="Figures/Asistente gerente Financiero.png" alt="Asistente Gerente Financiero">
+                            <h3>Juan Camilo Rondón Orjuela</h3>
+                            <p class="position">Asistente Gerente Financiero</p>
+                            <p class="description">Soporte en la administración y análisis financiero</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo Diseño y Desarrollo -->
+                <div class="team-group" data-group="diseno">
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="Figures/Gerente de Diseño y Desarrollo.png" alt="Gerente de Diseño y Desarrollo">
+                            <h3>Jair Alexander Real Hernández</h3>
+                            <p class="position">Gerente de Diseño y Desarrollo</p>
+                            <p class="description">Innovación y desarrollo de nuevos productos</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="Figures/Asistente de Gerente de Diseño y Desarrollo.png" alt="Asistente de Gerente de Diseño y Desarrollo">
+                            <h3>Juan Diego Velandia Bedoya</h3>
+                            <p class="position">Asistente de Gerente de Diseño y Desarrollo</p>
+                            <p class="description">Apoyo técnico en el diseño de componentes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo Producción -->
+                <div class="team-group" data-group="produccion">
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="Figures/Gerente de Producción.png" alt="Gerente de Producción">
+                            <h3>John Sebastián Sánchez García</h3>
+                            <p class="position">Gerente de Producción</p>
+                            <p class="description">Optimización de procesos productivos</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="Figures/Asistente gerente producción.png" alt="Asistente Gerente de Producción">
+                            <h3>Cristian Camilo Roa</h3>
+                            <p class="position">Asistente Gerente de Producción</p>
+                            <p class="description">Supervisión y control de la producción</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grupo Calidad -->
+                <div class="team-group" data-group="calidad">
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="Figures/Gerente de Calidad.png" alt="Gerente de Calidad">
+                            <h3>Luis Felipe Morantes Puentes</h3>
+                            <p class="position">Gerente de Calidad</p>
+                            <p class="description">Aseguramiento de la calidad en todos los procesos</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="Figures/Asistente de Gerente de Calidad.png" alt="Asistente de Gerente de Calidad">
+                            <h3>Juan Pablo Salas Herreño</h3>
+                            <p class="position">Asistente de Gerente de Calidad</p>
+                            <p class="description">Control y verificación de estándares de calidad</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Producto -->
+    <section id="producto" class="product-section">
+        <div class="container">
+            <h2>Nuestro Producto</h2>
+            <p class="product-intro">Presentamos nuestra biela de alta precisión, diseñada y fabricada con los más altos estándares de calidad.</p>
+            
+            <div class="product-gallery">
+                <div class="product-image">
+                    <img src="Figures/Biela 3d.jpg" alt="Biela 3D" class="clickable-image" data-modal="modal">
+                    <h3>Modelo 3D</h3>
+                    <p>Diseño asistido por computadora con precisión milimétrica</p>
+                </div>
+                <div class="product-image">
+                    <img src="Figures/Biela final.jpg" alt="Biela Final" class="clickable-image" data-modal="modal">
+                    <h3>Producto Final</h3>
+                    <p>Resultado de nuestro proceso de manufactura de precisión</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cumplimiento de Requisitos -->
+    <section id="requisitos" class="requirements-section">
+        <div class="container">
+            <h2>Cumplimiento de Requisitos</h2>
+            <div class="table-container">
+                <table class="requirements-table">
+                    <thead>
+                        <tr>
+                            <th>Requisito</th>
+                            <th>Especificación</th>
+                            <th>Valor Obtenido</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Material</td>
+                            <td>Acero aleado AISI 4140</td>
+                            <td>AISI 4140</td>
+                            <td class="status-approved">✓ Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>Resistencia a la tracción</td>
+                            <td>≥ 900 MPa</td>
+                            <td>965 MPa</td>
+                            <td class="status-approved">✓ Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>Dureza</td>
+                            <td>25-32 HRC</td>
+                            <td>28 HRC</td>
+                            <td class="status-approved">✓ Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>Peso máximo</td>
+                            <td>≤ 650g</td>
+                            <td>630g</td>
+                            <td class="status-approved">✓ Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>Tolerancia dimensional</td>
+                            <td>±0.02 mm</td>
+                            <td>±0.018 mm</td>
+                            <td class="status-approved">✓ Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>Rugosidad superficial</td>
+                            <td>Ra ≤ 1.6 μm</td>
+                            <td>Ra 1.4 μm</td>
+                            <td class="status-approved">✓ Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>Factor de seguridad</td>
+                            <td>≥ 2.2</td>
+                            <td>2.8</td>
+                            <td class="status-approved">✓ Cumple</td>
+                        </tr>
+                        <tr>
+                            <td>Vida útil mínima</td>
+                            <td>80,000 ciclos</td>
+                            <td>95,000 ciclos</td>
+                            <td class="status-approved">✓ Cumple</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Costos -->
+    <section id="costos" class="costs-section">
+        <div class="container">
+            <h2>Análisis de Costos</h2>
+            
+            <div class="costs-grid">
+                <div class="cost-table-container">
+                    <h3>Costos de Producción Unitarios</h3>
+                    <table class="costs-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Costo (COP)</th>
+                                <th>Porcentaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Materia Prima</td>
+                                <td>$45,000</td>
+                                <td>37.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Mano de Obra</td>
+                                <td>$25,000</td>
+                                <td>20.8%</td>
+                            </tr>
+                            <tr>
+                                <td>Maquinaria y Equipo</td>
+                                <td>$30,000</td>
+                                <td>25.0%</td>
+                            </tr>
+                            <tr>
+                                <td>Gastos Generales</td>
+                                <td>$15,000</td>
+                                <td>12.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Control de Calidad</td>
+                                <td>$5,000</td>
+                                <td>4.2%</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>Total Costo Unitario</strong></td>
+                                <td><strong>$120,000</strong></td>
+                                <td><strong>100%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="cost-table-container">
+                    <h3>Precios de Venta</h3>
+                    <table class="costs-table">
+                        <thead>
+                            <tr>
+                                <th>Cantidad</th>
+                                <th>Precio Unitario (COP)</th>
+                                <th>Descuento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1 - 10 unidades</td>
+                                <td>$180,000</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>11 - 50 unidades</td>
+                                <td>$170,000</td>
+                                <td>5.6%</td>
+                            </tr>
+                            <tr>
+                                <td>51 - 100 unidades</td>
+                                <td>$160,000</td>
+                                <td>11.1%</td>
+                            </tr>
+                            <tr>
+                                <td>101 - 500 unidades</td>
+                                <td>$150,000</td>
+                                <td>16.7%</td>
+                            </tr>
+                            <tr>
+                                <td>500+ unidades</td>
+                                <td>$140,000</td>
+                                <td>22.2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ecibielas Racing</h3>
+                    <p>Líderes en fabricación de bielas de alta calidad</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: info@ecibielasracing.com</p>
+                    <p>Teléfono: +57 (1) 234-5678</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ecibielas Racing. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal para imágenes -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
