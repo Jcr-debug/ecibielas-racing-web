@@ -1,6 +1,7 @@
 # Script para actualizar la página web de Ecibielas Racing
 # Automatiza el proceso de subir cambios a GitHub Pages
 
+Write-Host "================================================" -ForegroundColor Green
 Write-Host "Script de Actualización - Ecibielas Racing" -ForegroundColor Green
 Write-Host "================================================" -ForegroundColor Green
 Write-Host ""
