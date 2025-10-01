@@ -1,12 +1,8 @@
-# Script para actualizar la página web de Ecibielas Racing
-# Automatiza el proceso de subir cambios a GitHub Pages
-
 Write-Host "================================================" -ForegroundColor Green
 Write-Host "Script de Actualización - Ecibielas Racing" -ForegroundColor Green
 Write-Host "================================================" -ForegroundColor Green
 Write-Host ""
 
-# Verificar si estamos en el directorio correcto
 if (!(Test-Path "index.html")) {
     Write-Host "ERROR: No se encuentra index.html" -ForegroundColor Red
     Write-Host "   Asegúrate de ejecutar este script desde la carpeta del proyecto" -ForegroundColor Yellow
@@ -14,7 +10,6 @@ if (!(Test-Path "index.html")) {
     exit 1
 }
 
-# Verificar estado de Git
 Write-Host "Verificando cambios..." -ForegroundColor Cyan
 git status
 
@@ -28,7 +23,6 @@ if ($respuesta -ne "s" -and $respuesta -ne "S") {
     exit 0
 }
 
-# Solicitar mensaje de commit
 Write-Host ""
 Write-Host "Describe los cambios realizados:" -ForegroundColor Yellow
 $mensaje = Read-Host "Mensaje"
@@ -40,18 +34,14 @@ if ([string]::IsNullOrWhiteSpace($mensaje)) {
 Write-Host ""
 Write-Host "Procesando actualización..." -ForegroundColor Cyan
 
-# Agregar todos los cambios
 Write-Host "   - Agregando archivos modificados..." -ForegroundColor Gray
 git add .
 
-# Hacer commit
 Write-Host "   - Creando commit..." -ForegroundColor Gray
 git commit -m "$mensaje"
 
-# Verificar si hay cambios para subir
 $gitStatus = git status --porcelain
 if ($LASTEXITCODE -eq 0) {
-    # Subir cambios a GitHub
     Write-Host "   - Subiendo cambios a GitHub..." -ForegroundColor Gray
     git push
     
