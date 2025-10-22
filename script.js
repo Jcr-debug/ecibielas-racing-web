@@ -56,6 +56,346 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showGroup(0);
 
+    // Product Carousel
+    const productSlides = document.querySelectorAll('.product-slide');
+    const productDots = document.querySelectorAll('.product-indicator .dot');
+    const prevProductBtn = document.getElementById('prevProductBtn');
+    const nextProductBtn = document.getElementById('nextProductBtn');
+    let currentProductIndex = 0;
+
+    // Construction Images Slideshow
+    const constructionImages = document.querySelectorAll('.construction-image');
+    const prevConstructionBtn = document.getElementById('prevConstructionBtn');
+    const nextConstructionBtn = document.getElementById('nextConstructionBtn');
+    const currentImageSpan = document.getElementById('currentImage');
+    const totalImagesSpan = document.getElementById('totalImages');
+    let currentConstructionIndex = 0;
+    let constructionInterval = null;
+    const autoPlayDelay = 2000; // 2 segundos entre imágenes
+
+    function showConstructionImage(index) {
+        if (constructionImages.length === 0) return;
+
+        console.log('Mostrando imagen:', index + 1); // Debug
+
+        constructionImages.forEach((img, i) => {
+            img.classList.remove('active');
+            console.log('Imagen', i + 1, 'active:', i === index); // Debug
+        });
+
+        constructionImages[index].classList.add('active');
+        
+        if (currentImageSpan) {
+            currentImageSpan.textContent = index + 1;
+        }
+    }
+
+    function nextConstructionImage() {
+        console.log('nextConstructionImage llamado'); // Debug
+        if (currentConstructionIndex < constructionImages.length - 1) {
+            currentConstructionIndex++;
+        } else {
+            currentConstructionIndex = 0; // Volver al inicio
+        }
+        showConstructionImage(currentConstructionIndex);
+    }
+
+    function prevConstructionImage() {
+        console.log('prevConstructionImage llamado'); // Debug
+        if (currentConstructionIndex > 0) {
+            currentConstructionIndex--;
+        } else {
+            currentConstructionIndex = constructionImages.length - 1; // Ir al final
+        }
+        showConstructionImage(currentConstructionIndex);
+    }
+
+    function startConstructionAutoplay() {
+        console.log('Iniciando autoplay'); // Debug
+        stopConstructionAutoplay(); // Limpiar intervalo existente
+        constructionInterval = setInterval(() => {
+            nextConstructionImage();
+        }, autoPlayDelay);
+    }
+
+    function stopConstructionAutoplay() {
+        console.log('Deteniendo autoplay'); // Debug
+        if (constructionInterval) {
+            clearInterval(constructionInterval);
+            constructionInterval = null;
+        }
+    }
+
+    // Inicializar el slideshow de construcción
+    if (constructionImages.length > 0) {
+        console.log('Total de imágenes de construcción:', constructionImages.length); // Debug
+        
+        if (totalImagesSpan) {
+            totalImagesSpan.textContent = constructionImages.length;
+        }
+        
+        // Mostrar la primera imagen
+        showConstructionImage(0);
+        
+        // Agregar eventos a los botones
+        if (prevConstructionBtn) {
+            console.log('Botón previo encontrado'); // Debug
+            prevConstructionBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Click en botón previo'); // Debug
+                prevConstructionImage();
+                stopConstructionAutoplay();
+                setTimeout(startConstructionAutoplay, 5000);
+            });
+        } else {
+            console.log('Botón previo NO encontrado'); // Debug
+        }
+        
+        if (nextConstructionBtn) {
+            console.log('Botón siguiente encontrado'); // Debug
+            nextConstructionBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Click en botón siguiente'); // Debug
+                nextConstructionImage();
+                stopConstructionAutoplay();
+                setTimeout(startConstructionAutoplay, 5000);
+            });
+        } else {
+            console.log('Botón siguiente NO encontrado'); // Debug
+        }
+        
+        // Iniciar autoplay cuando el usuario está en la sección de productos
+        const productSection = document.querySelector('#producto');
+        if (productSection) {
+            const productObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && currentProductIndex === 0) {
+                        startConstructionAutoplay();
+                    } else {
+                        stopConstructionAutoplay();
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            productObserver.observe(productSection);
+        }
+    } else {
+        console.log('No se encontraron imágenes de construcción'); // Debug
+    }
+
+    // Forja Images Slideshow
+    const forjaImages = document.querySelectorAll('.forja-image');
+    const prevForjaBtn = document.getElementById('prevForjaBtn');
+    const nextForjaBtn = document.getElementById('nextForjaBtn');
+    const currentForjaImageSpan = document.getElementById('currentForjaImage');
+    const totalForjaImagesSpan = document.getElementById('totalForjaImages');
+    let currentForjaIndex = 0;
+    let forjaInterval = null;
+
+    function showForjaImage(index) {
+        if (forjaImages.length === 0) return;
+
+        console.log('Mostrando imagen de forja:', index + 1); // Debug
+
+        forjaImages.forEach((img, i) => {
+            img.classList.remove('active');
+        });
+
+        forjaImages[index].classList.add('active');
+        
+        if (currentForjaImageSpan) {
+            currentForjaImageSpan.textContent = index + 1;
+        }
+    }
+
+    function nextForjaImage() {
+        console.log('nextForjaImage llamado'); // Debug
+        if (currentForjaIndex < forjaImages.length - 1) {
+            currentForjaIndex++;
+        } else {
+            currentForjaIndex = 0; // Volver al inicio
+        }
+        showForjaImage(currentForjaIndex);
+    }
+
+    function prevForjaImage() {
+        console.log('prevForjaImage llamado'); // Debug
+        if (currentForjaIndex > 0) {
+            currentForjaIndex--;
+        } else {
+            currentForjaIndex = forjaImages.length - 1; // Ir al final
+        }
+        showForjaImage(currentForjaIndex);
+    }
+
+    function startForjaAutoplay() {
+        console.log('Iniciando autoplay de forja'); // Debug
+        stopForjaAutoplay(); // Limpiar intervalo existente
+        forjaInterval = setInterval(() => {
+            nextForjaImage();
+        }, autoPlayDelay);
+    }
+
+    function stopForjaAutoplay() {
+        console.log('Deteniendo autoplay de forja'); // Debug
+        if (forjaInterval) {
+            clearInterval(forjaInterval);
+            forjaInterval = null;
+        }
+    }
+
+    // Inicializar el slideshow de forja
+    if (forjaImages.length > 0) {
+        console.log('Total de imágenes de forja:', forjaImages.length); // Debug
+        
+        if (totalForjaImagesSpan) {
+            totalForjaImagesSpan.textContent = forjaImages.length;
+        }
+        
+        // Mostrar la primera imagen
+        showForjaImage(0);
+        
+        // Agregar eventos a los botones
+        if (prevForjaBtn) {
+            console.log('Botón previo de forja encontrado'); // Debug
+            prevForjaBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Click en botón previo de forja'); // Debug
+                prevForjaImage();
+                stopForjaAutoplay();
+                setTimeout(startForjaAutoplay, 5000);
+            });
+        }
+        
+        if (nextForjaBtn) {
+            console.log('Botón siguiente de forja encontrado'); // Debug
+            nextForjaBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Click en botón siguiente de forja'); // Debug
+                nextForjaImage();
+                stopForjaAutoplay();
+                setTimeout(startForjaAutoplay, 5000);
+            });
+        }
+    } else {
+        console.log('No se encontraron imágenes de forja'); // Debug
+    }
+
+    function showProductSlide(index) {
+        productSlides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+
+        productSlides[index].classList.add('active');
+
+        productDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+
+        if (prevProductBtn && nextProductBtn) {
+            prevProductBtn.disabled = index === 0;
+            nextProductBtn.disabled = index === productSlides.length - 1;
+        }
+
+        // Pausar todos los videos primero
+        const allVideos = document.querySelectorAll('.product-video');
+        allVideos.forEach(video => {
+            video.pause();
+            video.currentTime = 0;
+        });
+
+        // Ocultar/mostrar los controles según el slide
+        const constructionControls = document.querySelector('.construction-controls');
+        const forjaControls = document.querySelector('.forja-controls');
+        
+        if (index === 0) {
+            // Estamos en el slide de construcción
+            currentConstructionIndex = 0;
+            showConstructionImage(0);
+            startConstructionAutoplay();
+            stopForjaAutoplay();
+            
+            if (constructionControls) {
+                constructionControls.style.display = 'flex';
+            }
+            if (forjaControls) {
+                forjaControls.style.display = 'none';
+            }
+        } else if (index === 1) {
+            // Estamos en el slide del video
+            stopConstructionAutoplay();
+            stopForjaAutoplay();
+            
+            if (constructionControls) {
+                constructionControls.style.display = 'none';
+            }
+            if (forjaControls) {
+                forjaControls.style.display = 'none';
+            }
+            
+            // Reproducir el video automáticamente
+            const currentVideo = productSlides[index].querySelector('.product-video');
+            if (currentVideo) {
+                setTimeout(() => {
+                    currentVideo.play().catch(error => {
+                        console.log('Error al reproducir video automáticamente:', error);
+                    });
+                }, 100);
+            }
+        } else if (index === 2) {
+            // Estamos en el slide de forja
+            stopConstructionAutoplay();
+            currentForjaIndex = 0;
+            showForjaImage(0);
+            startForjaAutoplay();
+            
+            if (constructionControls) {
+                constructionControls.style.display = 'none';
+            }
+            if (forjaControls) {
+                forjaControls.style.display = 'flex';
+            }
+        } else {
+            stopConstructionAutoplay();
+            stopForjaAutoplay();
+            
+            if (constructionControls) {
+                constructionControls.style.display = 'none';
+            }
+            if (forjaControls) {
+                forjaControls.style.display = 'none';
+            }
+        }
+    }
+
+    function nextProductSlide() {
+        if (currentProductIndex < productSlides.length - 1) {
+            currentProductIndex++;
+            showProductSlide(currentProductIndex);
+        }
+    }
+
+    function prevProductSlide() {
+        if (currentProductIndex > 0) {
+            currentProductIndex--;
+            showProductSlide(currentProductIndex);
+        }
+    }
+
+    if (nextProductBtn && prevProductBtn && productSlides.length > 0) {
+        nextProductBtn.addEventListener('click', nextProductSlide);
+        prevProductBtn.addEventListener('click', prevProductSlide);
+
+        productDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentProductIndex = index;
+                showProductSlide(currentProductIndex);
+            });
+        });
+
+        showProductSlide(0);
+    }
+
     const navLinks = document.querySelectorAll('.nav a[href^="#"]');
     
     navLinks.forEach(link => {
@@ -295,6 +635,67 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.style.display === 'block') {
             modal.style.display = 'none';
+        }
+    });
+
+    // Team Member Modal
+    const teamModal = document.getElementById('teamMemberModal');
+    const teamModalImage = document.getElementById('teamModalImage');
+    const teamModalName = document.getElementById('teamModalName');
+    const teamModalPosition = document.getElementById('teamModalPosition');
+    const teamModalDescription = document.getElementById('teamModalDescription');
+    const closeTeamModal = document.getElementById('closeTeamModal');
+
+    // Descripciones extendidas para cada miembro
+    const teamDescriptions = {
+        'Giovanni Alexander Castellanos Forero': 'Profesional con amplia experiencia en el sector financiero e inversiones estratégicas. Ha liderado múltiples proyectos de crecimiento empresarial y cuenta con una sólida trayectoria en la identificación de oportunidades de negocio. Su visión estratégica ha sido fundamental para posicionar a Ecibielas Racing como una empresa competitiva en el mercado. Aporta conocimientos en gestión de recursos, análisis de mercado y desarrollo de alianzas comerciales que impulsan el crecimiento sostenible de la organización.',
+        'Brayan Stiben Navas Silva': 'Estudiante de Ingeniería Mecánica con destacado desempeño académico y liderazgo en proyectos universitarios. Ha desarrollado competencias en diseño mecánico, análisis de sistemas y gestión de proyectos de manufactura. Su visión estratégica y capacidad para liderar equipos multidisciplinarios lo posicionan como Gerente General del proyecto. Cuenta con conocimientos en software de diseño CAD, análisis de elementos finitos y metodologías de gestión empresarial que aplica para asegurar la excelencia operativa del proyecto.',
+        'Juan Manuel Muñoz Hernández': 'Estudiante de Ingeniería Mecánica con enfoque en gestión de proyectos y organización empresarial. Su formación académica incluye conocimientos en planificación estratégica, coordinación de equipos y seguimiento de indicadores de desempeño. Como Asistente de Gerente General, facilita la comunicación efectiva entre las diferentes áreas del proyecto y asegura el cumplimiento de los objetivos establecidos. Destaca por su capacidad organizativa y habilidad para implementar soluciones creativas ante los desafíos del proyecto.',
+        'Arlex Santiago Farfán Cárdenas': 'Estudiante de Ingeniería Mecánica con especialización en análisis financiero y gestión de costos de manufactura. Posee conocimientos en elaboración de presupuestos, análisis de rentabilidad y control de recursos. Como Gerente Financiero, ha desarrollado sistemas de seguimiento de costos de producción y análisis económico del proyecto. Su formación le permite equilibrar las consideraciones técnicas con la viabilidad económica, asegurando la sostenibilidad financiera del emprendimiento.',
+        'Juan Camilo Rondón Orjuela': 'Estudiante de Ingeniería Mecánica con interés en administración financiera y control de gestión. Su rol incluye el apoyo en la elaboración de reportes financieros, seguimiento de inversiones y análisis de costos de producción. Ha desarrollado habilidades en el manejo de herramientas de análisis económico y participa activamente en la planificación presupuestaria del proyecto. Su trabajo contribuye a mantener la transparencia y eficiencia en la gestión de recursos del equipo.',
+        'Jair Alexander Real Hernández': 'Estudiante de Ingeniería Mecánica con pasión por el diseño y desarrollo de productos innovadores. Especializado en diseño asistido por computadora (CAD/CAM) y simulación de procesos de manufactura. Ha liderado el desarrollo del modelo 3D de la biela y las simulaciones de llenado en Magma. Su dominio de software especializado como SolidWorks, AutoCAD y herramientas de simulación permite crear diseños optimizados que cumplen con estándares industriales de calidad y eficiencia.',
+        'Juan Diego Velandia Bedoya': 'Estudiante de Ingeniería Mecánica especializado en diseño mecánico y análisis estructural. Experto en modelado 3D, análisis de elementos finitos (FEA) y optimización de componentes. Su trabajo se centra en la validación técnica de los diseños mediante simulaciones computacionales avanzadas, asegurando que cada componente cumpla con las especificaciones de resistencia y durabilidad requeridas. Ha contribuido significativamente al desarrollo técnico del proyecto con análisis detallados de esfuerzos y deformaciones.',
+        'John Sebastián Sánchez García': 'Estudiante de Ingeniería Mecánica con enfoque en procesos de manufactura y optimización de producción. Posee conocimientos en metodologías de producción eficiente, planeación de procesos y control de operaciones. Como Gerente de Producción, coordina las actividades de fabricación del proyecto y asegura la calidad en cada etapa del proceso. Su formación incluye técnicas de mejora continua y gestión de operaciones que aplica para optimizar tiempos y recursos en la manufactura.',
+        'Cristian Camilo Roa': 'Estudiante de Ingeniería Mecánica con experiencia práctica en procesos de manufactura y operaciones de taller. Especializado en programación y operación de máquinas CNC, supervisión de procesos productivos y control de calidad en planta. Su conocimiento de las operaciones prácticas de manufactura y su capacidad para resolver problemas técnicos en tiempo real son fundamentales para el desarrollo exitoso del proyecto. Ha implementado mejoras en los procedimientos de fabricación que optimizan la eficiencia operativa.',
+        'Luis Felipe Morantes Puentes': 'Estudiante de Ingeniería Mecánica con especialización en sistemas de gestión de calidad y metrología. Posee conocimientos en normas de calidad ISO, técnicas de control estadístico de procesos y métodos de inspección. Como Gerente de Calidad, diseña e implementa protocolos de control que aseguran el cumplimiento de especificaciones técnicas. Su formación incluye el manejo de instrumentos de medición de precisión y metodologías de mejora continua aplicadas al sector automotriz.',
+        'Juan Pablo Salas Herreño': 'Estudiante de Ingeniería Mecánica con enfoque en control de calidad y metrología dimensional. Especializado en técnicas de inspección, uso de instrumentos de medición de alta precisión y análisis de tolerancias. Su trabajo incluye la verificación de especificaciones técnicas, documentación de resultados de inspección y propuesta de acciones correctivas. Ha desarrollado procedimientos de control que garantizan que cada componente fabricado cumpla con los estándares de calidad establecidos para el proyecto.'
+    };
+
+    // Agregar evento click a cada miembro del equipo
+    const teamMembers = document.querySelectorAll('.team-member');
+    teamMembers.forEach(member => {
+        member.style.cursor = 'pointer';
+        member.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            const name = this.querySelector('h3').textContent;
+            const position = this.querySelector('.position').textContent;
+            const description = teamDescriptions[name] || this.querySelector('.description').textContent;
+
+            teamModalImage.src = img.src;
+            teamModalName.textContent = name;
+            teamModalPosition.textContent = position;
+            teamModalDescription.textContent = description;
+
+            teamModal.style.display = 'block';
+        });
+    });
+
+    // Cerrar modal con el botón X
+    closeTeamModal.addEventListener('click', function() {
+        teamModal.style.display = 'none';
+    });
+
+    // Cerrar modal al hacer click fuera del contenido
+    teamModal.addEventListener('click', function(e) {
+        if (e.target === teamModal) {
+            teamModal.style.display = 'none';
+        }
+    });
+
+    // Cerrar modal con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && teamModal.style.display === 'block') {
+            teamModal.style.display = 'none';
         }
     });
 });
