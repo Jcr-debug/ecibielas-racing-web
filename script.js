@@ -481,25 +481,62 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalCaption = document.getElementById('modalCaption');
     const closeModal = document.getElementById('closeModal');
     const clickableImages = document.querySelectorAll('.clickable-image');
+    let modalUpdateInterval = null;
+
+    function updateModalImage() {
+        // Actualizar la imagen del modal con la imagen activa actual
+        const activeConstructionImage = document.querySelector('.construction-image.active');
+        const activeForjaImage = document.querySelector('.forja-image.active');
+        
+        if (activeConstructionImage && modalImage.classList.contains('construction-modal')) {
+            modalImage.src = activeConstructionImage.src;
+        } else if (activeForjaImage && modalImage.classList.contains('forja-modal')) {
+            modalImage.src = activeForjaImage.src;
+        }
+    }
+
+    function startModalUpdate(type) {
+        stopModalUpdate();
+        modalImage.classList.add(type + '-modal');
+        updateModalImage();
+        modalUpdateInterval = setInterval(updateModalImage, 100); // Actualizar frecuentemente
+    }
+
+    function stopModalUpdate() {
+        if (modalUpdateInterval) {
+            clearInterval(modalUpdateInterval);
+            modalUpdateInterval = null;
+        }
+        modalImage.classList.remove('construction-modal', 'forja-modal');
+    }
 
     
     clickableImages.forEach(img => {
-        img.addEventListener('click', function() {
+        img.addEventListener('click', function(e) {
             modal.style.display = 'block';
             modalImage.src = this.src;
             modalCaption.textContent = ''; 
+            
+            // Determinar si es construcción o forja
+            if (this.classList.contains('construction-image')) {
+                startModalUpdate('construction');
+            } else if (this.classList.contains('forja-image')) {
+                startModalUpdate('forja');
+            }
         });
     });
 
     
     closeModal.addEventListener('click', function() {
         modal.style.display = 'none';
+        stopModalUpdate();
     });
 
     
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             modal.style.display = 'none';
+            stopModalUpdate();
         }
     });
 
@@ -507,6 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.style.display === 'block') {
             modal.style.display = 'none';
+            stopModalUpdate();
         }
     });
 
