@@ -222,111 +222,83 @@
             <h3 class="process-title">Del Diseño a la Realidad</h3>
             <p class="process-intro">Conoce el fascinante proceso de moldeo en arena: desde el tamizado de materiales hasta la creación de moldes de alta precisión</p>
 
-            <div class="product-navigation">
-                <button class="nav-btn prev-btn" id="prevProductBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="product-indicator">
-                    <div class="dots-container">
-                        <span class="dot active" data-slide="0"></span>
-                        <span class="dot" data-slide="1"></span>
-                        <span class="dot" data-slide="2"></span>
-                        <span class="dot" data-slide="3"></span>
+            <div class="product-gallery">
+                <!-- Columna izquierda: Procesos con fotos -->
+                <div class="product-image">
+                    <!-- Proceso de Moldeo -->
+                    <div class="construction-slideshow">
+                        <img src="Figures/Construccion/1.jpg" alt="Proceso de Construcción 1" class="construction-image active clickable-image">
+                        <img src="Figures/Construccion/2.jpg" alt="Proceso de Construcción 2" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/3.jpg" alt="Proceso de Construcción 3" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/4.jpg" alt="Proceso de Construcción 4" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/5.jpg" alt="Proceso de Construcción 5" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/6.jpg" alt="Proceso de Construcción 6" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/7.jpg" alt="Proceso de Construcción 7" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/8.jpg" alt="Proceso de Construcción 8" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/9.jpg" alt="Proceso de Construcción 9" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/10.jpg" alt="Proceso de Construcción 10" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/11.jpg" alt="Proceso de Construcción 11" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/12.jpg" alt="Proceso de Construcción 12" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/13.jpg" alt="Proceso de Construcción 13" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/14.jpg" alt="Proceso de Construcción 14" class="construction-image clickable-image">
+                        <img src="Figures/Construccion/15.jpg" alt="Proceso de Construcción 15" class="construction-image clickable-image">
                     </div>
-                </div>
-                <button class="nav-btn next-btn" id="nextProductBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-
-            <div class="product-carousel">
-                <!-- Proceso de construcción con imágenes en secuencia -->
-                <div class="product-slide active" data-slide="construccion">
-                    <div class="product-content">
-                        <div class="construction-slideshow">
-                            <img src="Figures/Construccion/1.jpg" alt="Proceso de Construcción 1" class="construction-image active clickable-image">
-                            <img src="Figures/Construccion/2.jpg" alt="Proceso de Construcción 2" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/3.jpg" alt="Proceso de Construcción 3" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/4.jpg" alt="Proceso de Construcción 4" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/5.jpg" alt="Proceso de Construcción 5" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/6.jpg" alt="Proceso de Construcción 6" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/7.jpg" alt="Proceso de Construcción 7" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/8.jpg" alt="Proceso de Construcción 8" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/9.jpg" alt="Proceso de Construcción 9" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/10.jpg" alt="Proceso de Construcción 10" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/11.jpg" alt="Proceso de Construcción 11" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/12.jpg" alt="Proceso de Construcción 12" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/13.jpg" alt="Proceso de Construcción 13" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/14.jpg" alt="Proceso de Construcción 14" class="construction-image clickable-image">
-                            <img src="Figures/Construccion/15.jpg" alt="Proceso de Construcción 15" class="construction-image clickable-image">
+                    <div class="construction-controls">
+                        <button class="construction-nav-btn" id="prevConstructionBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="construction-counter">
+                            <span id="currentImage">1</span> / <span id="totalImages">15</span>
                         </div>
-                        <div class="construction-controls">
-                            <button class="construction-nav-btn" id="prevConstructionBtn">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <div class="construction-counter">
-                                <span id="currentImage">1</span> / <span id="totalImages">15</span>
-                            </div>
-                            <button class="construction-nav-btn" id="nextConstructionBtn">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                        <h3>Proceso de Moldeo y Preparación</h3>
-                        <p>Descubre el meticuloso proceso de preparación de arena y moldeo que garantiza la precisión de cada pieza</p>
+                        <button class="construction-nav-btn" id="nextConstructionBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                </div>
+                    <h3>Proceso de Moldeo y Preparación</h3>
+                    <p>Descubre el meticuloso proceso de preparación de arena y moldeo que garantiza la precisión de cada pieza</p>
 
-                <!-- Video del proceso -->
-                <div class="product-slide" data-slide="video">
-                    <div class="product-content">
-                        <video controls class="product-video" preload="auto" loop>
-                            <source src="Figures/Videos/Vídeo sin título ‐ Hecho con Clipchamp (1).mp4" type="video/mp4">
-                            Tu navegador no soporta el elemento de video.
-                        </video>
-                        <h3>Simulación de Llenado en Magma</h3>
-                        <p>Simulación computacional del proceso de llenado del molde de nuestra biela utilizando el software Magma</p>
+                    <!-- Proceso de Fundición -->
+                    <div class="forja-slideshow" style="margin-top: 2rem;">
+                        <img src="Figures/Forja/1.jpg" alt="Proceso de Fundición 1" class="forja-image active clickable-image">
+                        <img src="Figures/Forja/2.jpg" alt="Proceso de Fundición 2" class="forja-image clickable-image">
+                        <img src="Figures/Forja/3.jpg" alt="Proceso de Fundición 3" class="forja-image clickable-image">
+                        <img src="Figures/Forja/4.jpg" alt="Proceso de Fundición 4" class="forja-image clickable-image">
+                        <img src="Figures/Forja/5.jpg" alt="Proceso de Fundición 5" class="forja-image clickable-image">
+                        <img src="Figures/Forja/6.jpg" alt="Proceso de Fundición 6" class="forja-image clickable-image">
+                        <img src="Figures/Forja/7.jpg" alt="Proceso de Fundición 7" class="forja-image clickable-image">
+                        <img src="Figures/Forja/8.jpg" alt="Proceso de Fundición 8" class="forja-image clickable-image">
+                        <img src="Figures/Forja/9.jpg" alt="Proceso de Fundición 9" class="forja-image clickable-image">
                     </div>
+                    <div class="forja-controls">
+                        <button class="forja-nav-btn" id="prevForjaBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="forja-counter">
+                            <span id="currentForjaImage">1</span> / <span id="totalForjaImages">9</span>
+                        </div>
+                        <button class="forja-nav-btn" id="nextForjaBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <h3>Proceso de Fundición</h3>
+                    <p>Observa el proceso de fundición en molde que da forma y resistencia superior a nuestras bielas</p>
                 </div>
 
-                <!-- Proceso de fundición con imágenes en secuencia -->
-                <div class="product-slide" data-slide="forja">
-                    <div class="product-content">
-                        <div class="forja-slideshow">
-                            <img src="Figures/Forja/1.jpg" alt="Proceso de Fundición 1" class="forja-image active clickable-image">
-                            <img src="Figures/Forja/2.jpg" alt="Proceso de Fundición 2" class="forja-image clickable-image">
-                            <img src="Figures/Forja/3.jpg" alt="Proceso de Fundición 3" class="forja-image clickable-image">
-                            <img src="Figures/Forja/4.jpg" alt="Proceso de Fundición 4" class="forja-image clickable-image">
-                            <img src="Figures/Forja/5.jpg" alt="Proceso de Fundición 5" class="forja-image clickable-image">
-                            <img src="Figures/Forja/6.jpg" alt="Proceso de Fundición 6" class="forja-image clickable-image">
-                            <img src="Figures/Forja/7.jpg" alt="Proceso de Fundición 7" class="forja-image clickable-image">
-                            <img src="Figures/Forja/8.jpg" alt="Proceso de Fundición 8" class="forja-image clickable-image">
-                            <img src="Figures/Forja/9.jpg" alt="Proceso de Fundición 9" class="forja-image clickable-image">
-                        </div>
-                        <div class="forja-controls">
-                            <button class="forja-nav-btn" id="prevForjaBtn">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <div class="forja-counter">
-                                <span id="currentForjaImage">1</span> / <span id="totalForjaImages">15</span>
-                            </div>
-                            <button class="forja-nav-btn" id="nextForjaBtn">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
-                        </div>
-                        <h3>Proceso de Fundición</h3>
-                        <p>Observa el proceso de fundición en molde que da forma y resistencia superior a nuestras bielas</p>
-                    </div>
-                </div>
+                <!-- Columna derecha: Videos -->
+                <div class="product-image">
+                    <video controls autoplay muted class="product-video" preload="auto" loop>
+                        <source src="Figures/Videos/Vídeo sin título ‐ Hecho con Clipchamp (1).mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                    <h3>Simulación de Llenado en Magma</h3>
+                    <p>Simulación computacional del proceso de llenado del molde de nuestra biela utilizando el software Magma</p>
 
-                <div class="product-slide" data-slide="video-forja">
-                    <div class="product-content">
-                        <video controls class="product-video" preload="auto" loop>
-                            <source src="Figures/Videos/Forja.mp4" type="video/mp4">
-                            Tu navegador no soporta el elemento de video.
-                        </video>
-                        <h3>Proceso de Fundición</h3>
-                        <p>Video del proceso de fundición de la biela, mostrando el vertido del metal fundido en el molde</p>
-                    </div>
+                    <video controls autoplay muted class="product-video" preload="auto" loop style="margin-top: 2rem;">
+                        <source src="Figures/Videos/Forja.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                    <h3>Proceso de Fundición</h3>
+                    <p>Video del proceso de fundición de la biela, mostrando el vertido del metal fundido en el molde</p>
                 </div>
             </div>
         </div>

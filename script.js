@@ -73,14 +73,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let constructionInterval = null;
     const autoPlayDelay = 2000; // 2 segundos entre imágenes
 
+    // Forja Images Slideshow
+    const forjaImages = document.querySelectorAll('.forja-image');
+    const prevForjaBtn = document.getElementById('prevForjaBtn');
+    const nextForjaBtn = document.getElementById('nextForjaBtn');
+    const currentForjaImageSpan = document.getElementById('currentForjaImage');
+    const totalForjaImagesSpan = document.getElementById('totalForjaImages');
+    let currentForjaIndex = 0;
+    let forjaInterval = null;
+
     function showConstructionImage(index) {
         if (constructionImages.length === 0) return;
 
-        console.log('Mostrando imagen:', index + 1); // Debug
-
         constructionImages.forEach((img, i) => {
             img.classList.remove('active');
-            console.log('Imagen', i + 1, 'active:', i === index); // Debug
         });
 
         constructionImages[index].classList.add('active');
@@ -91,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function nextConstructionImage() {
-        console.log('nextConstructionImage llamado'); // Debug
         if (currentConstructionIndex < constructionImages.length - 1) {
             currentConstructionIndex++;
         } else {
@@ -101,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function prevConstructionImage() {
-        console.log('prevConstructionImage llamado'); // Debug
         if (currentConstructionIndex > 0) {
             currentConstructionIndex--;
         } else {
@@ -111,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function startConstructionAutoplay() {
-        console.log('Iniciando autoplay'); // Debug
         stopConstructionAutoplay(); // Limpiar intervalo existente
         constructionInterval = setInterval(() => {
             nextConstructionImage();
@@ -119,83 +122,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function stopConstructionAutoplay() {
-        console.log('Deteniendo autoplay'); // Debug
         if (constructionInterval) {
             clearInterval(constructionInterval);
             constructionInterval = null;
         }
     }
 
-    // Inicializar el slideshow de construcción
-    if (constructionImages.length > 0) {
-        console.log('Total de imágenes de construcción:', constructionImages.length); // Debug
-        
-        if (totalImagesSpan) {
-            totalImagesSpan.textContent = constructionImages.length;
-        }
-        
-        // Mostrar la primera imagen
-        showConstructionImage(0);
-        
-        // Agregar eventos a los botones
-        if (prevConstructionBtn) {
-            console.log('Botón previo encontrado'); // Debug
-            prevConstructionBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Click en botón previo'); // Debug
-                prevConstructionImage();
-                stopConstructionAutoplay();
-                setTimeout(startConstructionAutoplay, 5000);
-            });
-        } else {
-            console.log('Botón previo NO encontrado'); // Debug
-        }
-        
-        if (nextConstructionBtn) {
-            console.log('Botón siguiente encontrado'); // Debug
-            nextConstructionBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Click en botón siguiente'); // Debug
-                nextConstructionImage();
-                stopConstructionAutoplay();
-                setTimeout(startConstructionAutoplay, 5000);
-            });
-        } else {
-            console.log('Botón siguiente NO encontrado'); // Debug
-        }
-        
-        // Iniciar autoplay cuando el usuario está en la sección de productos
-        const productSection = document.querySelector('#producto');
-        if (productSection) {
-            const productObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && currentProductIndex === 0) {
-                        startConstructionAutoplay();
-                    } else {
-                        stopConstructionAutoplay();
-                    }
-                });
-            }, { threshold: 0.3 });
-            
-            productObserver.observe(productSection);
-        }
-    } else {
-        console.log('No se encontraron imágenes de construcción'); // Debug
-    }
-
-    // Forja Images Slideshow
-    const forjaImages = document.querySelectorAll('.forja-image');
-    const prevForjaBtn = document.getElementById('prevForjaBtn');
-    const nextForjaBtn = document.getElementById('nextForjaBtn');
-    const currentForjaImageSpan = document.getElementById('currentForjaImage');
-    const totalForjaImagesSpan = document.getElementById('totalForjaImages');
-    let currentForjaIndex = 0;
-    let forjaInterval = null;
-
     function showForjaImage(index) {
         if (forjaImages.length === 0) return;
-
-        console.log('Mostrando imagen de forja:', index + 1); // Debug
 
         forjaImages.forEach((img, i) => {
             img.classList.remove('active');
@@ -209,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function nextForjaImage() {
-        console.log('nextForjaImage llamado'); // Debug
         if (currentForjaIndex < forjaImages.length - 1) {
             currentForjaIndex++;
         } else {
@@ -219,7 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function prevForjaImage() {
-        console.log('prevForjaImage llamado'); // Debug
         if (currentForjaIndex > 0) {
             currentForjaIndex--;
         } else {
@@ -229,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function startForjaAutoplay() {
-        console.log('Iniciando autoplay de forja'); // Debug
         stopForjaAutoplay(); // Limpiar intervalo existente
         forjaInterval = setInterval(() => {
             nextForjaImage();
@@ -237,17 +168,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function stopForjaAutoplay() {
-        console.log('Deteniendo autoplay de forja'); // Debug
         if (forjaInterval) {
             clearInterval(forjaInterval);
             forjaInterval = null;
         }
     }
 
+    // Inicializar el slideshow de construcción
+    if (constructionImages.length > 0) {
+        if (totalImagesSpan) {
+            totalImagesSpan.textContent = constructionImages.length;
+        }
+        
+        // Mostrar la primera imagen
+        showConstructionImage(0);
+        
+        // Agregar eventos a los botones
+        if (prevConstructionBtn) {
+            prevConstructionBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevConstructionImage();
+                stopConstructionAutoplay();
+                setTimeout(startConstructionAutoplay, 5000);
+            });
+        }
+        
+        if (nextConstructionBtn) {
+            nextConstructionBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextConstructionImage();
+                stopConstructionAutoplay();
+                setTimeout(startConstructionAutoplay, 5000);
+            });
+        }
+        
+        // Iniciar autoplay inmediatamente
+        startConstructionAutoplay();
+    }
+
     // Inicializar el slideshow de forja
     if (forjaImages.length > 0) {
-        console.log('Total de imágenes de forja:', forjaImages.length); // Debug
-        
         if (totalForjaImagesSpan) {
             totalForjaImagesSpan.textContent = forjaImages.length;
         }
@@ -257,10 +217,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Agregar eventos a los botones
         if (prevForjaBtn) {
-            console.log('Botón previo de forja encontrado'); // Debug
             prevForjaBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                console.log('Click en botón previo de forja'); // Debug
                 prevForjaImage();
                 stopForjaAutoplay();
                 setTimeout(startForjaAutoplay, 5000);
@@ -268,120 +226,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (nextForjaBtn) {
-            console.log('Botón siguiente de forja encontrado'); // Debug
             nextForjaBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                console.log('Click en botón siguiente de forja'); // Debug
                 nextForjaImage();
                 stopForjaAutoplay();
                 setTimeout(startForjaAutoplay, 5000);
             });
         }
-    } else {
-        console.log('No se encontraron imágenes de forja'); // Debug
+
+        // Iniciar autoplay inmediatamente
+        startForjaAutoplay();
     }
 
     function showProductSlide(index) {
-        productSlides.forEach(slide => {
-            slide.classList.remove('active');
-        });
-
-        productSlides[index].classList.add('active');
-
-        productDots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-        });
-
-        if (prevProductBtn && nextProductBtn) {
-            prevProductBtn.disabled = index === 0;
-            nextProductBtn.disabled = index === productSlides.length - 1;
-        }
-
-        // Pausar todos los videos primero
-        const allVideos = document.querySelectorAll('.product-video');
-        allVideos.forEach(video => {
-            video.pause();
-            video.currentTime = 0;
-        });
-
-        // Ocultar/mostrar los controles según el slide
-        const constructionControls = document.querySelector('.construction-controls');
-        const forjaControls = document.querySelector('.forja-controls');
-        
-        if (index === 0) {
-            // Estamos en el slide de construcción
-            currentConstructionIndex = 0;
-            showConstructionImage(0);
-            startConstructionAutoplay();
-            stopForjaAutoplay();
-            
-            if (constructionControls) {
-                constructionControls.style.display = 'flex';
-            }
-            if (forjaControls) {
-                forjaControls.style.display = 'none';
-            }
-        } else if (index === 1 || index === 3) {
-            // Estamos en un slide de video
-            stopConstructionAutoplay();
-            stopForjaAutoplay();
-            
-            if (constructionControls) {
-                constructionControls.style.display = 'none';
-            }
-            if (forjaControls) {
-                forjaControls.style.display = 'none';
-            }
-            
-            // Reproducir el video automáticamente
-            const currentVideo = productSlides[index].querySelector('.product-video');
-            if (currentVideo) {
-                setTimeout(() => {
-                    currentVideo.play().catch(error => {
-                        console.log('Error al reproducir video automáticamente:', error);
-                    });
-                }, 100);
-            }
-        } else if (index === 2) {
-            // Estamos en el slide de forja
-            stopConstructionAutoplay();
-            currentForjaIndex = 0;
-            showForjaImage(0);
-            startForjaAutoplay();
-            
-            if (constructionControls) {
-                constructionControls.style.display = 'none';
-            }
-            if (forjaControls) {
-                forjaControls.style.display = 'flex';
-            }
-        } else {
-            stopConstructionAutoplay();
-            stopForjaAutoplay();
-            
-            if (constructionControls) {
-                constructionControls.style.display = 'none';
-            }
-            if (forjaControls) {
-                forjaControls.style.display = 'none';
-            }
-        }
+        // Esta función ya no es necesaria con el nuevo diseño de galería
+        // pero se mantiene para compatibilidad con el código existente
     }
 
     function nextProductSlide() {
-        if (currentProductIndex < productSlides.length - 1) {
-            currentProductIndex++;
-            showProductSlide(currentProductIndex);
-        }
+        // Función legacy - ya no se usa
     }
 
     function prevProductSlide() {
-        if (currentProductIndex > 0) {
-            currentProductIndex--;
-            showProductSlide(currentProductIndex);
-        }
+        // Función legacy - ya no se usa
     }
 
+    // Comentar navegación de producto que ya no existe
+    /*
     if (nextProductBtn && prevProductBtn && productSlides.length > 0) {
         nextProductBtn.addEventListener('click', nextProductSlide);
         prevProductBtn.addEventListener('click', prevProductSlide);
@@ -395,6 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         showProductSlide(0);
     }
+    */
 
     const navLinks = document.querySelectorAll('.nav a[href^="#"]');
     
