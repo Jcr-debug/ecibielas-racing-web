@@ -321,8 +321,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (forjaControls) {
                 forjaControls.style.display = 'none';
             }
-        } else if (index === 1) {
-            // Estamos en el slide del video
+        } else if (index === 1 || index === 3) {
+            // Estamos en un slide de video
             stopConstructionAutoplay();
             stopForjaAutoplay();
             
