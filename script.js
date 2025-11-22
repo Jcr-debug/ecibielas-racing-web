@@ -613,7 +613,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const expandableRows = document.querySelectorAll('.expandable-row');
     
     expandableRows.forEach(row => {
-        row.addEventListener('click', function() {
+        const handleExpand = function(e) {
+            e.preventDefault();
             const target = this.getAttribute('data-target');
             const detailRows = document.querySelectorAll('.' + target);
             const isExpanded = this.classList.contains('expanded');
@@ -627,7 +628,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     detailRow.style.display = 'table-row';
                 }
             });
-        });
+        };
+        
+        // Soporte para click en desktop
+        row.addEventListener('click', handleExpand);
+        
+        // Soporte para touch en móviles
+        row.addEventListener('touchend', handleExpand);
     });
 });
 
