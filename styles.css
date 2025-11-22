@@ -6,12 +6,15 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #000;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 .container {
@@ -1018,7 +1021,7 @@ body {
 
 .costs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
     margin-bottom: 50px;
 }
@@ -1028,6 +1031,7 @@ body {
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow-x: auto;
 }
 
 .cost-table-container h3 {
@@ -1040,6 +1044,7 @@ body {
 .costs-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 300px;
 }
 
 .costs-table th {
@@ -1048,11 +1053,13 @@ body {
     padding: 15px 12px;
     font-weight: bold;
     text-align: left;
+    white-space: nowrap;
 }
 
 .costs-table td {
     padding: 12px;
     border-bottom: 1px solid #e9ecef;
+    word-wrap: break-word;
 }
 
 .costs-table tbody tr:hover {
