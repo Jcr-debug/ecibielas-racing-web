@@ -608,6 +608,27 @@ document.addEventListener('DOMContentLoaded', function() {
             teamModal.style.display = 'none';
         }
     });
+
+    // Expandable cost table rows
+    const expandableRows = document.querySelectorAll('.expandable-row');
+    
+    expandableRows.forEach(row => {
+        row.addEventListener('click', function() {
+            const target = this.getAttribute('data-target');
+            const detailRows = document.querySelectorAll('.' + target);
+            const isExpanded = this.classList.contains('expanded');
+            
+            this.classList.toggle('expanded');
+            
+            detailRows.forEach(detailRow => {
+                if (isExpanded) {
+                    detailRow.style.display = 'none';
+                } else {
+                    detailRow.style.display = 'table-row';
+                }
+            });
+        });
+    });
 });
 
 
