@@ -575,11 +575,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const teamMembers = document.querySelectorAll('.team-member');
     teamMembers.forEach(member => {
         member.style.cursor = 'pointer';
-        member.addEventListener('click', function() {
-            const img = this.querySelector('img');
-            const name = this.querySelector('h3').textContent;
-            const position = this.querySelector('.position').textContent;
-            const description = teamDescriptions[name] || this.querySelector('.description').textContent;
+        
+        // Función para abrir el modal
+        const openModal = function(e) {
+            // Evitar que el click en el botón dispare el evento del contenedor
+            if (e.target.classList.contains('read-more-btn')) {
+                e.stopPropagation();
+            }
+            
+            const img = member.querySelector('img');
+            const name = member.querySelector('h3').textContent;
+            const position = member.querySelector('.position').textContent;
+            const description = teamDescriptions[name] || member.querySelector('.description').textContent;
 
             teamModalImage.src = img.src;
             teamModalName.textContent = name;
@@ -587,7 +594,19 @@ document.addEventListener('DOMContentLoaded', function() {
             teamModalDescription.textContent = description;
 
             teamModal.style.display = 'block';
-        });
+        };
+        
+        // Click en la tarjeta completa
+        member.addEventListener('click', openModal);
+        
+        // Click en el botón "Ver más..."
+        const readMoreBtn = member.querySelector('.read-more-btn');
+        if (readMoreBtn) {
+            readMoreBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openModal(e);
+            });
+        }
     });
 
     // Cerrar modal con el botón X

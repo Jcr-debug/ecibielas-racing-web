@@ -462,6 +462,26 @@ body {
     color: #6c757d;
     font-size: 0.9rem;
     line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.read-more-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.read-more-btn:hover {
+    background: #b91c1c !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;
 }
 
 
