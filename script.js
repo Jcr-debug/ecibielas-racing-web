@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('nextBtn');
     const dots = document.querySelectorAll('.dot');
     const teamGroupElements = document.querySelectorAll('.team-group');
+    const teamCarousel = document.querySelector('.team-carousel');
+
+    // Variables para el swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
     function showGroup(index) {
         teamGroupElements.forEach(group => {
@@ -54,6 +61,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Soporte para swipe en dispositivos táctiles
+    if (teamCarousel) {
+        teamCarousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        teamCarousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+    }
+
+    function handleSwipe() {
+        const swipeThreshold = 50; // Distancia mínima para considerar un swipe
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+        
+        // Verificar que el movimiento horizontal sea mayor que el vertical
+        // para evitar interferir con el scroll vertical
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+            if (deltaX > 0) {
+                // Swipe hacia la derecha - mostrar grupo anterior
+                prevGroup();
+            } else {
+                // Swipe hacia la izquierda - mostrar grupo siguiente
+                nextGroup();
+            }
+        }
+    }
+
     showGroup(0);
 
     // Product Carousel
@@ -69,9 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextConstructionBtn = document.getElementById('nextConstructionBtn');
     const currentImageSpan = document.getElementById('currentImage');
     const totalImagesSpan = document.getElementById('totalImages');
+    const constructionSlideshow = document.querySelector('.construction-slideshow');
     let currentConstructionIndex = 0;
     let constructionInterval = null;
     const autoPlayDelay = 2000; // 2 segundos entre imágenes
+
+    // Variables para swipe en construcción
+    let constructionTouchStartX = 0;
+    let constructionTouchEndX = 0;
+    let constructionTouchStartY = 0;
+    let constructionTouchEndY = 0;
 
     // Forja Images Slideshow
     const forjaImages = document.querySelectorAll('.forja-image');
@@ -79,8 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextForjaBtn = document.getElementById('nextForjaBtn');
     const currentForjaImageSpan = document.getElementById('currentForjaImage');
     const totalForjaImagesSpan = document.getElementById('totalForjaImages');
+    const forjaSlideshow = document.querySelector('.forja-slideshow');
     let currentForjaIndex = 0;
     let forjaInterval = null;
+
+    // Variables para swipe en forja
+    let forjaTouchStartX = 0;
+    let forjaTouchEndX = 0;
+    let forjaTouchStartY = 0;
+    let forjaTouchEndY = 0;
 
     function showConstructionImage(index) {
         if (constructionImages.length === 0) return;
@@ -202,8 +255,38 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
+        // Soporte para swipe en construcción
+        if (constructionSlideshow) {
+            constructionSlideshow.addEventListener('touchstart', function(e) {
+                constructionTouchStartX = e.changedTouches[0].screenX;
+                constructionTouchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            constructionSlideshow.addEventListener('touchend', function(e) {
+                constructionTouchEndX = e.changedTouches[0].screenX;
+                constructionTouchEndY = e.changedTouches[0].screenY;
+                handleConstructionSwipe();
+            }, { passive: true });
+        }
+        
         // Iniciar autoplay inmediatamente
         startConstructionAutoplay();
+    }
+
+    function handleConstructionSwipe() {
+        const swipeThreshold = 50;
+        const deltaX = constructionTouchEndX - constructionTouchStartX;
+        const deltaY = constructionTouchEndY - constructionTouchStartY;
+        
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+            stopConstructionAutoplay();
+            if (deltaX > 0) {
+                prevConstructionImage();
+            } else {
+                nextConstructionImage();
+            }
+            setTimeout(startConstructionAutoplay, 5000);
+        }
     }
 
     // Inicializar el slideshow de forja
@@ -234,8 +317,38 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        // Soporte para swipe en forja
+        if (forjaSlideshow) {
+            forjaSlideshow.addEventListener('touchstart', function(e) {
+                forjaTouchStartX = e.changedTouches[0].screenX;
+                forjaTouchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            forjaSlideshow.addEventListener('touchend', function(e) {
+                forjaTouchEndX = e.changedTouches[0].screenX;
+                forjaTouchEndY = e.changedTouches[0].screenY;
+                handleForjaSwipe();
+            }, { passive: true });
+        }
+
         // Iniciar autoplay inmediatamente
         startForjaAutoplay();
+    }
+
+    function handleForjaSwipe() {
+        const swipeThreshold = 50;
+        const deltaX = forjaTouchEndX - forjaTouchStartX;
+        const deltaY = forjaTouchEndY - forjaTouchStartY;
+        
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+            stopForjaAutoplay();
+            if (deltaX > 0) {
+                prevForjaImage();
+            } else {
+                nextForjaImage();
+            }
+            setTimeout(startForjaAutoplay, 5000);
+        }
     }
 
     function showProductSlide(index) {

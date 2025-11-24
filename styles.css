@@ -393,6 +393,11 @@ body {
     position: relative;
     overflow: hidden;
     min-height: 400px;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .team-group {
@@ -612,6 +617,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .construction-image {
@@ -692,6 +702,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 .forja-image {
