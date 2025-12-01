@@ -25,7 +25,7 @@ body {
 
 
 .header {
-    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    background: linear-gradient(135deg, #fdb813, #e6a010);
     color: white;
     padding: 0.8rem 0;
     position: fixed;
@@ -172,7 +172,7 @@ body {
 
 .hero {
     margin-top: 80px;
-    background: linear-gradient(rgba(220, 38, 38, 0.3), rgba(185, 28, 28, 0.3)), url('Figures/Portada.png');
+    background: linear-gradient(rgba(253, 184, 19, 0.3), rgba(230, 160, 16, 0.3)), url('Figures/Portada.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -206,7 +206,7 @@ body {
 .cta-button {
     background: white;
     color: #000;
-    border: 2px solid #dc2626;
+    border: 2px solid #fdb813;
     padding: 15px 30px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -217,9 +217,9 @@ body {
 
 .cta-button:hover {
     transform: translateY(-2px) !important;
-    background: #dc2626 !important;
+    background: #fdb813 !important;
     color: white !important;
-    box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4) !important;
+    box-shadow: 0 5px 15px rgba(253, 184, 19, 0.4) !important;
 }
 
 .hero-image {
@@ -264,13 +264,13 @@ body {
 
 .mission-card:hover {
     transform: translateY(-5px) !important;
-    box-shadow: 0 15px 40px rgba(220, 38, 38, 0.15) !important;
-    border: 2px solid #dc2626;
+    box-shadow: 0 15px 40px rgba(253, 184, 19, 0.15) !important;
+    border: 2px solid #fdb813;
 }
 
 .mission-card i {
     font-size: 3rem;
-    color: #dc2626;
+    color: #fdb813;
     margin-bottom: 20px;
 }
 
@@ -300,7 +300,7 @@ body {
 
 .mission-card li::before {
     content: "•";
-    color: #dc2626;
+    color: #fdb813;
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -336,7 +336,7 @@ body {
 }
 
 .nav-btn {
-    background: #dc2626;
+    background: #fdb813;
     color: white;
     border: none;
     width: 50px;
@@ -348,13 +348,13 @@ body {
     justify-content: center;
     font-size: 1.2rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 4px 15px rgba(253, 184, 19, 0.3);
 }
 
 .nav-btn:hover:not(:disabled) {
-    background: #b91c1c !important;
+    background: #e6a010 !important;
     transform: scale(1.1) !important;
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4) !important;
+    box-shadow: 0 6px 20px rgba(253, 184, 19, 0.4) !important;
 }
 
 .nav-btn:disabled {
@@ -384,7 +384,7 @@ body {
 }
 
 .dot.active {
-    background: #dc2626;
+    background: #fdb813;
     transform: scale(1.2);
 }
 
@@ -437,7 +437,7 @@ body {
 
 .team-member:hover {
     transform: translateY(-5px) !important;
-    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2) !important;
+    box-shadow: 0 10px 30px rgba(253, 184, 19, 0.2) !important;
     background: #ffffff !important;
 }
 
@@ -447,7 +447,7 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
-    border: 4px solid #dc2626;
+    border: 4px solid #fdb813;
 }
 
 .team-member h3 {
@@ -457,7 +457,7 @@ body {
 }
 
 .position {
-    color: #dc2626;
+    color: #fdb813;
     font-weight: bold;
     font-size: 1rem;
     margin-bottom: 15px;
@@ -471,7 +471,7 @@ body {
 }
 
 .read-more-btn {
-    background: #dc2626;
+    background: #fdb813;
     color: white;
     border: none;
     padding: 8px 20px;
@@ -484,9 +484,9 @@ body {
 }
 
 .read-more-btn:hover {
-    background: #b91c1c !important;
+    background: #e6a010 !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(253, 184, 19, 0.3) !important;
 }
 
 
@@ -656,7 +656,7 @@ body {
 }
 
 .construction-nav-btn {
-    background: #dc2626;
+    background: #fdb813;
     color: white;
     border: none;
     width: 40px;
@@ -668,13 +668,13 @@ body {
     justify-content: center;
     font-size: 1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 2px 10px rgba(253, 184, 19, 0.3);
 }
 
 .construction-nav-btn:hover:not(:disabled) {
-    background: #b91c1c !important;
+    background: #e6a010 !important;
     transform: scale(1.1) !important;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(253, 184, 19, 0.4) !important;
 }
 
 .construction-nav-btn:disabled {
@@ -741,7 +741,7 @@ body {
 }
 
 .forja-nav-btn {
-    background: #dc2626;
+    background: #fdb813;
     color: white;
     border: none;
     width: 40px;
@@ -753,13 +753,13 @@ body {
     justify-content: center;
     font-size: 1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 2px 10px rgba(253, 184, 19, 0.3);
 }
 
 .forja-nav-btn:hover:not(:disabled) {
-    background: #b91c1c !important;
+    background: #e6a010 !important;
     transform: scale(1.1) !important;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(253, 184, 19, 0.4) !important;
 }
 
 .forja-nav-btn:disabled {
@@ -826,7 +826,7 @@ body {
 }
 
 .limpieza-nav-btn {
-    background: #dc2626;
+    background: #fdb813;
     color: white;
     border: none;
     width: 40px;
@@ -838,13 +838,13 @@ body {
     justify-content: center;
     font-size: 1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 2px 10px rgba(253, 184, 19, 0.3);
 }
 
 .limpieza-nav-btn:hover:not(:disabled) {
-    background: #b91c1c !important;
+    background: #e6a010 !important;
     transform: scale(1.1) !important;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(253, 184, 19, 0.4) !important;
 }
 
 .limpieza-nav-btn:disabled {
@@ -911,7 +911,7 @@ body {
 }
 
 .bielas-nav-btn {
-    background: #dc2626;
+    background: #fdb813;
     color: white;
     border: none;
     width: 40px;
@@ -923,13 +923,13 @@ body {
     justify-content: center;
     font-size: 1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 2px 10px rgba(253, 184, 19, 0.3);
 }
 
 .bielas-nav-btn:hover:not(:disabled) {
-    background: #b91c1c !important;
+    background: #e6a010 !important;
     transform: scale(1.1) !important;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(253, 184, 19, 0.4) !important;
 }
 
 .bielas-nav-btn:disabled {
@@ -980,7 +980,7 @@ body {
 
 .product-image:hover {
     transform: scale(1.02) !important;
-    box-shadow: 0 15px 40px rgba(220, 38, 38, 0.15) !important;
+    box-shadow: 0 15px 40px rgba(253, 184, 19, 0.15) !important;
 }
 
 .product-image img {
@@ -1053,7 +1053,7 @@ body {
 }
 
 .close:hover {
-    color: #dc2626;
+    color: #fdb813;
 }
 
 .modal-caption {
@@ -1083,8 +1083,8 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
-    border: 4px solid #dc2626;
-    box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+    border: 4px solid #fdb813;
+    box-shadow: 0 5px 15px rgba(253, 184, 19, 0.3);
 }
 
 .team-modal-left h3 {
@@ -1095,7 +1095,7 @@ body {
 }
 
 .team-modal-position {
-    color: #dc2626;
+    color: #fdb813;
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 0;
@@ -1109,7 +1109,7 @@ body {
     font-size: 1.5rem;
     color: #000;
     margin-bottom: 20px;
-    border-bottom: 2px solid #dc2626;
+    border-bottom: 2px solid #fdb813;
     padding-bottom: 10px;
 }
 
@@ -1148,7 +1148,7 @@ body {
 }
 
 .requirements-table th {
-    background: #dc2626;
+    background: #fdb813;
     color: white;
     padding: 20px 15px;
     font-weight: bold;
@@ -1162,22 +1162,22 @@ body {
 
 
 .dot:hover {
-    background: #dc2626 !important;
+    background: #fdb813 !important;
     transform: scale(1.2) !important;
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+    box-shadow: 0 2px 8px rgba(253, 184, 19, 0.3);
 }
 
 .requirements-table tbody tr:hover {
     background: #f8f9fa !important;
     transform: scale(1.01) !important;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+    box-shadow: 0 4px 12px rgba(253, 184, 19, 0.1);
     transition: all 0.2s ease !important;
 }
 
 .costs-table tbody tr:hover {
     background: #f8f9fa !important;
     transform: scale(1.01) !important;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+    box-shadow: 0 4px 12px rgba(253, 184, 19, 0.1);
     transition: all 0.2s ease !important;
 }
 
@@ -1187,7 +1187,7 @@ body {
 }
 
 .social-links a:hover {
-    color: #dc2626 !important;
+    color: #fdb813 !important;
     transform: scale(1.2);
 }
 
@@ -1199,7 +1199,7 @@ body {
 
 
 .header.scrolled {
-    background: rgba(220, 38, 38, 0.95) !important;
+    background: rgba(253, 184, 19, 0.95) !important;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
@@ -1274,7 +1274,7 @@ body {
 .costs-table tbody tr:hover {
     background: #f8f9fa !important;
     transform: scale(1.01) !important;
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.1);
+    box-shadow: 0 4px 12px rgba(253, 184, 19, 0.1);
     transition: all 0.2s ease !important;
 }
 
@@ -1290,7 +1290,7 @@ body {
 }
 
 .expand-icon {
-    color: #dc2626;
+    color: #fdb813;
     font-size: 0.9rem;
     transition: transform 0.3s ease;
 }
@@ -1415,7 +1415,7 @@ body {
 
 .collaborator-card:hover {
     transform: translateY(-10px) !important;
-    box-shadow: 0 15px 40px rgba(220, 38, 38, 0.2) !important;
+    box-shadow: 0 15px 40px rgba(253, 184, 19, 0.2) !important;
 }
 
 .collaborator-card img {
@@ -1455,7 +1455,7 @@ body {
 
 .footer-section h3, .footer-section h4 {
     margin-bottom: 20px;
-    color: #dc2626;
+    color: #fdb813;
 }
 
 .footer-section p {
@@ -1475,13 +1475,13 @@ body {
 }
 
 .social-links a:hover {
-    color: #dc2626;
+    color: #fdb813;
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid #dc2626;
+    border-top: 1px solid #fdb813;
     opacity: 0.7;
 }
 
@@ -1522,7 +1522,7 @@ body {
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        background: linear-gradient(135deg, #fdb813, #e6a010);
         transition: right 0.3s ease;
         z-index: 1000;
         padding-top: 70px;
