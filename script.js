@@ -135,6 +135,38 @@ document.addEventListener('DOMContentLoaded', function() {
     let forjaTouchStartY = 0;
     let forjaTouchEndY = 0;
 
+    // Limpieza Images Slideshow
+    const limpiezaImages = document.querySelectorAll('.limpieza-image');
+    const prevLimpiezaBtn = document.getElementById('prevLimpiezaBtn');
+    const nextLimpiezaBtn = document.getElementById('nextLimpiezaBtn');
+    const currentLimpiezaImageSpan = document.getElementById('currentLimpiezaImage');
+    const totalLimpiezaImagesSpan = document.getElementById('totalLimpiezaImages');
+    const limpiezaSlideshow = document.querySelector('.limpieza-slideshow');
+    let currentLimpiezaIndex = 0;
+    let limpiezaInterval = null;
+
+    // Variables para swipe en limpieza
+    let limpiezaTouchStartX = 0;
+    let limpiezaTouchEndX = 0;
+    let limpiezaTouchStartY = 0;
+    let limpiezaTouchEndY = 0;
+
+    // Bielas Completas Images Slideshow
+    const bielasImages = document.querySelectorAll('.bielas-image');
+    const prevBielasBtn = document.getElementById('prevBielasBtn');
+    const nextBielasBtn = document.getElementById('nextBielasBtn');
+    const currentBielasImageSpan = document.getElementById('currentBielasImage');
+    const totalBielasImagesSpan = document.getElementById('totalBielasImages');
+    const bielasSlideshow = document.querySelector('.bielas-slideshow');
+    let currentBielasIndex = 0;
+    let bielasInterval = null;
+
+    // Variables para swipe en bielas
+    let bielasTouchStartX = 0;
+    let bielasTouchEndX = 0;
+    let bielasTouchStartY = 0;
+    let bielasTouchEndY = 0;
+
     function showConstructionImage(index) {
         if (constructionImages.length === 0) return;
 
@@ -348,6 +380,222 @@ document.addEventListener('DOMContentLoaded', function() {
                 nextForjaImage();
             }
             setTimeout(startForjaAutoplay, 5000);
+        }
+    }
+
+    function showLimpiezaImage(index) {
+        if (limpiezaImages.length === 0) return;
+
+        limpiezaImages.forEach((img, i) => {
+            img.classList.remove('active');
+        });
+
+        limpiezaImages[index].classList.add('active');
+        
+        if (currentLimpiezaImageSpan) {
+            currentLimpiezaImageSpan.textContent = index + 1;
+        }
+    }
+
+    function nextLimpiezaImage() {
+        if (currentLimpiezaIndex < limpiezaImages.length - 1) {
+            currentLimpiezaIndex++;
+        } else {
+            currentLimpiezaIndex = 0; // Volver al inicio
+        }
+        showLimpiezaImage(currentLimpiezaIndex);
+    }
+
+    function prevLimpiezaImage() {
+        if (currentLimpiezaIndex > 0) {
+            currentLimpiezaIndex--;
+        } else {
+            currentLimpiezaIndex = limpiezaImages.length - 1; // Ir al final
+        }
+        showLimpiezaImage(currentLimpiezaIndex);
+    }
+
+    function startLimpiezaAutoplay() {
+        stopLimpiezaAutoplay(); // Limpiar intervalo existente
+        limpiezaInterval = setInterval(() => {
+            nextLimpiezaImage();
+        }, autoPlayDelay);
+    }
+
+    function stopLimpiezaAutoplay() {
+        if (limpiezaInterval) {
+            clearInterval(limpiezaInterval);
+            limpiezaInterval = null;
+        }
+    }
+
+    // Inicializar el slideshow de limpieza
+    if (limpiezaImages.length > 0) {
+        if (totalLimpiezaImagesSpan) {
+            totalLimpiezaImagesSpan.textContent = limpiezaImages.length;
+        }
+        
+        // Mostrar la primera imagen
+        showLimpiezaImage(0);
+        
+        // Agregar eventos a los botones
+        if (prevLimpiezaBtn) {
+            prevLimpiezaBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevLimpiezaImage();
+                stopLimpiezaAutoplay();
+                setTimeout(startLimpiezaAutoplay, 5000);
+            });
+        }
+        
+        if (nextLimpiezaBtn) {
+            nextLimpiezaBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextLimpiezaImage();
+                stopLimpiezaAutoplay();
+                setTimeout(startLimpiezaAutoplay, 5000);
+            });
+        }
+
+        // Soporte para swipe en limpieza
+        if (limpiezaSlideshow) {
+            limpiezaSlideshow.addEventListener('touchstart', function(e) {
+                limpiezaTouchStartX = e.changedTouches[0].screenX;
+                limpiezaTouchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            limpiezaSlideshow.addEventListener('touchend', function(e) {
+                limpiezaTouchEndX = e.changedTouches[0].screenX;
+                limpiezaTouchEndY = e.changedTouches[0].screenY;
+                handleLimpiezaSwipe();
+            }, { passive: true });
+        }
+
+        // Iniciar autoplay inmediatamente
+        startLimpiezaAutoplay();
+    }
+
+    function handleLimpiezaSwipe() {
+        const swipeThreshold = 50;
+        const deltaX = limpiezaTouchEndX - limpiezaTouchStartX;
+        const deltaY = limpiezaTouchEndY - limpiezaTouchStartY;
+        
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+            stopLimpiezaAutoplay();
+            if (deltaX > 0) {
+                prevLimpiezaImage();
+            } else {
+                nextLimpiezaImage();
+            }
+            setTimeout(startLimpiezaAutoplay, 5000);
+        }
+    }
+
+    function showBielasImage(index) {
+        if (bielasImages.length === 0) return;
+
+        bielasImages.forEach((img, i) => {
+            img.classList.remove('active');
+        });
+
+        bielasImages[index].classList.add('active');
+        
+        if (currentBielasImageSpan) {
+            currentBielasImageSpan.textContent = index + 1;
+        }
+    }
+
+    function nextBielasImage() {
+        if (currentBielasIndex < bielasImages.length - 1) {
+            currentBielasIndex++;
+        } else {
+            currentBielasIndex = 0; // Volver al inicio
+        }
+        showBielasImage(currentBielasIndex);
+    }
+
+    function prevBielasImage() {
+        if (currentBielasIndex > 0) {
+            currentBielasIndex--;
+        } else {
+            currentBielasIndex = bielasImages.length - 1; // Ir al final
+        }
+        showBielasImage(currentBielasIndex);
+    }
+
+    function startBielasAutoplay() {
+        stopBielasAutoplay(); // Limpiar intervalo existente
+        bielasInterval = setInterval(() => {
+            nextBielasImage();
+        }, autoPlayDelay);
+    }
+
+    function stopBielasAutoplay() {
+        if (bielasInterval) {
+            clearInterval(bielasInterval);
+            bielasInterval = null;
+        }
+    }
+
+    // Inicializar el slideshow de bielas completas
+    if (bielasImages.length > 0) {
+        if (totalBielasImagesSpan) {
+            totalBielasImagesSpan.textContent = bielasImages.length;
+        }
+        
+        // Mostrar la primera imagen
+        showBielasImage(0);
+        
+        // Agregar eventos a los botones
+        if (prevBielasBtn) {
+            prevBielasBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                prevBielasImage();
+                stopBielasAutoplay();
+                setTimeout(startBielasAutoplay, 5000);
+            });
+        }
+        
+        if (nextBielasBtn) {
+            nextBielasBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                nextBielasImage();
+                stopBielasAutoplay();
+                setTimeout(startBielasAutoplay, 5000);
+            });
+        }
+
+        // Soporte para swipe en bielas
+        if (bielasSlideshow) {
+            bielasSlideshow.addEventListener('touchstart', function(e) {
+                bielasTouchStartX = e.changedTouches[0].screenX;
+                bielasTouchStartY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            bielasSlideshow.addEventListener('touchend', function(e) {
+                bielasTouchEndX = e.changedTouches[0].screenX;
+                bielasTouchEndY = e.changedTouches[0].screenY;
+                handleBielasSwipe();
+            }, { passive: true });
+        }
+
+        // Iniciar autoplay inmediatamente
+        startBielasAutoplay();
+    }
+
+    function handleBielasSwipe() {
+        const swipeThreshold = 50;
+        const deltaX = bielasTouchEndX - bielasTouchStartX;
+        const deltaY = bielasTouchEndY - bielasTouchStartY;
+        
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > swipeThreshold) {
+            stopBielasAutoplay();
+            if (deltaX > 0) {
+                prevBielasImage();
+            } else {
+                nextBielasImage();
+            }
+            setTimeout(startBielasAutoplay, 5000);
         }
     }
 
@@ -600,11 +848,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Actualizar la imagen del modal con la imagen activa actual
         const activeConstructionImage = document.querySelector('.construction-image.active');
         const activeForjaImage = document.querySelector('.forja-image.active');
+        const activeLimpiezaImage = document.querySelector('.limpieza-image.active');
+        const activeBielasImage = document.querySelector('.bielas-image.active');
         
         if (activeConstructionImage && modalImage.classList.contains('construction-modal')) {
             modalImage.src = activeConstructionImage.src;
         } else if (activeForjaImage && modalImage.classList.contains('forja-modal')) {
             modalImage.src = activeForjaImage.src;
+        } else if (activeLimpiezaImage && modalImage.classList.contains('limpieza-modal')) {
+            modalImage.src = activeLimpiezaImage.src;
+        } else if (activeBielasImage && modalImage.classList.contains('bielas-modal')) {
+            modalImage.src = activeBielasImage.src;
         }
     }
 
@@ -620,7 +874,7 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInterval(modalUpdateInterval);
             modalUpdateInterval = null;
         }
-        modalImage.classList.remove('construction-modal', 'forja-modal');
+        modalImage.classList.remove('construction-modal', 'forja-modal', 'limpieza-modal', 'bielas-modal');
     }
 
     
@@ -630,11 +884,15 @@ document.addEventListener('DOMContentLoaded', function() {
             modalImage.src = this.src;
             modalCaption.textContent = ''; 
             
-            // Determinar si es construcción o forja
+            // Determinar si es construcción, forja, limpieza o bielas
             if (this.classList.contains('construction-image')) {
                 startModalUpdate('construction');
             } else if (this.classList.contains('forja-image')) {
                 startModalUpdate('forja');
+            } else if (this.classList.contains('limpieza-image')) {
+                startModalUpdate('limpieza');
+            } else if (this.classList.contains('bielas-image')) {
+                startModalUpdate('bielas');
             }
         });
     });
