@@ -25,7 +25,7 @@ body {
 
 
 .header {
-    background: linear-gradient(135deg, #fdb813, #e6a010);
+    background: linear-gradient(135deg, #fdb813, #d69f0f);
     color: white;
     padding: 0.8rem 0;
     position: fixed;
@@ -352,7 +352,7 @@ body {
 }
 
 .nav-btn:hover:not(:disabled) {
-    background: #e6a010 !important;
+    background: #d69f0f !important;
     transform: scale(1.1) !important;
     box-shadow: 0 6px 20px rgba(253, 184, 19, 0.4) !important;
 }
@@ -484,7 +484,7 @@ body {
 }
 
 .read-more-btn:hover {
-    background: #e6a010 !important;
+    background: #d69f0f !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 4px 12px rgba(253, 184, 19, 0.3) !important;
 }
@@ -672,7 +672,7 @@ body {
 }
 
 .construction-nav-btn:hover:not(:disabled) {
-    background: #e6a010 !important;
+    background: #d69f0f !important;
     transform: scale(1.1) !important;
     box-shadow: 0 4px 15px rgba(253, 184, 19, 0.4) !important;
 }
@@ -757,7 +757,7 @@ body {
 }
 
 .forja-nav-btn:hover:not(:disabled) {
-    background: #e6a010 !important;
+    background: #d69f0f !important;
     transform: scale(1.1) !important;
     box-shadow: 0 4px 15px rgba(253, 184, 19, 0.4) !important;
 }
@@ -842,7 +842,7 @@ body {
 }
 
 .limpieza-nav-btn:hover:not(:disabled) {
-    background: #e6a010 !important;
+    background: #d69f0f !important;
     transform: scale(1.1) !important;
     box-shadow: 0 4px 15px rgba(253, 184, 19, 0.4) !important;
 }
@@ -927,7 +927,7 @@ body {
 }
 
 .bielas-nav-btn:hover:not(:disabled) {
-    background: #e6a010 !important;
+    background: #d69f0f !important;
     transform: scale(1.1) !important;
     box-shadow: 0 4px 15px rgba(253, 184, 19, 0.4) !important;
 }
@@ -1522,7 +1522,7 @@ body {
         right: -100%;
         width: 280px;
         height: 100vh;
-        background: linear-gradient(135deg, #fdb813, #e6a010);
+        background: linear-gradient(135deg, #fdb813, #d69f0f);
         transition: right 0.3s ease;
         z-index: 1000;
         padding-top: 70px;
